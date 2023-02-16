@@ -63,6 +63,10 @@ body {
     text-decoration: none;
 }
 
+.greenText {
+    color: #084C4B;
+}
+
 #seConnecter {
     color: #F6EEE3;
     background-color: #084C4B;

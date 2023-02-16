@@ -14,6 +14,7 @@ use teamiut\action\SeConnecter;
 use teamiut\action\Inscription;
 use teamiut\action\MotDePasseOublie;
 use teamiut\action\ChangementMotDePasse;
+use teamiut\action\FaireReservation;
 use teamiut\action\AffichageEvenement;
 
 

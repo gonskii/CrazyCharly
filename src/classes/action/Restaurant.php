@@ -57,7 +57,6 @@ class Restaurant implements Action
                 if (substr($minutes[0], -3) == "0") {
                     $date = substr($minutes[0], 0, -1) . "h" . $minutes[1];
                 }
-
                 $html .= "<div class='reservation'><li>" . $date . " pour " . $reservation->NBPersonnes . " personnes</li></div>";
             }
         }
