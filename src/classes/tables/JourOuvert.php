@@ -3,6 +3,7 @@
 namespace teamiut\tables;
 
 use teamiut\utilitaire\Date as Date;
+use teamiut\db\ConnectionFactory as ConnectionFactory;
 
 class JourOuvert {
     private int $IDJourOuvert;
@@ -24,7 +25,7 @@ class JourOuvert {
     }
 
     public static function populateJourOuvert() {
-        $db = ConnectionFactory::getConnection();
+        $db = ConnectionFactory::makeConnection();
         $sql = "SELECT * FROM JourOuvert";
         $stmt = $db->prepare($sql);
         $stmt->execute();
@@ -34,6 +35,19 @@ class JourOuvert {
             $joursOuverts[] = new JourOuvert($row['IDJourOuvert'], new Date($row['dateDeb']), new Date($row['dateFin']), $row['nbPersonnes'], $row['nbres']);
         }
         return $joursOuverts;
+    }
+
+    public function save() {
+        $db = ConnectionFactory::makeConnection();
+        $sql = "INSERT INTO JourOuvert (dateDeb, dateFin, nbPers, nbRes) VALUES (STR_TO_DATE(:dateDeb, '%Y-%c-%d %H:%i'), STR_TO_DATE(:dateFin, '%Y-%c-%d %H:%i'), :nbPers, :nbRes)";
+        $stmt = $db->prepare($sql);
+        $dateDeb = $this->dateDeb->toString();
+        $dateFin = $this->dateFin->toString();
+        $stmt->bindParam(':dateDeb', $dateDeb);
+        $stmt->bindParam(':dateFin', $dateFin);
+        $stmt->bindParam(':nbPers', $this->nbPersonnes);
+        $stmt->bindParam(':nbRes', $this->nbres);
+        $stmt->execute();
     }
 
 }
