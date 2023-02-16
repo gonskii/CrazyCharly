@@ -6,6 +6,7 @@ use teamiut\utilitaire\Date as Date;
 use teamiut\db\ConnectionFactory as ConnectionFactory;
 
 class Evenement {
+    private int $IDEvent;
     private string $nom;
     private string $theme;
     private Date $date;
@@ -16,7 +17,8 @@ class Evenement {
     private string $lieu;
     private string $image;
 
-    public function __construct(string $nom, string $theme, Date $date, int $nbParticipant, string $description, int $nbPlaceMax, string $intervenant, string $lieu, string $image) {
+    public function __construct(int $IDEvent, string $nom, string $theme, Date $date, int $nbParticipant, string $description, int $nbPlaceMax, string $intervenant, string $lieu, string $image) {
+        $this->IDEvent = $IDEvent;
         $this->nom = $nom;
         $this->theme = $theme;
         $this->date = $date;
@@ -33,14 +35,14 @@ class Evenement {
     }
 
     public static function getAllEvents() {
-        $db = ConnectionFactory::getConnection();
+        $db = ConnectionFactory::makeConnection();
         $sql = "SELECT * FROM Evenement";
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll();
         $events = array();
         foreach ($result as $row) {
-            $events[] = new Evenement($row['nom'], new Date($row['date']), $row['nbParticipant'], $row['description'], $row['nbPlaceMax'], $row['intervenant'], $row['lieu'], $row['image']);
+            $events[] = new Evenement($row['IDEvent'], $row['Nom'], $row['theme'], new Date($row['date']), $row['NBParticipants'], $row['Description'], $row['NBPlaceMax'], $row['intervenant'], $row['Lieu'], $row['image']);
         }
         return $events;
     }
