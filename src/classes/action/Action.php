@@ -1,6 +1,6 @@
 <?php
 
-namespace netvod\action;
+namespace teamiut\action;
 
 /**
  * interface Action

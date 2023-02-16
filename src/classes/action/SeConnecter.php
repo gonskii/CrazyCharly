@@ -1,9 +1,9 @@
 <?php
 
-namespace netvod\action;
+namespace teamiut\action;
 
 
-use netvod\Auth\Auth;
+use teamiut\Auth\Auth;
 
 /**
  * class SeConnecter

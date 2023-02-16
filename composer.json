@@ -1,9 +1,15 @@
 {
-    "name": "vendor/teamiut",
+    "name": "teamiut/appweb",
     "autoload": {
         "psr-4": {
-            "Vendor\\Teamiut\\": "src/"
+            "teamiut\\": "src/classes"
         }
     },
+    "authors": [
+        {
+            "name": "ArturoDelMadrazo",
+            "email": "33378667+Ischyrosmilus@users.noreply.github.com"
+        }
+    ],
     "require": {}
 }

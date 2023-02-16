@@ -1,10 +1,12 @@
 <?php
 declare(strict_types=1);
 
-require_once 'vendor/autoload.php';
-
 use teamiut\db\ConnectionFactory;
 use teamiut\dispatch\Dispatcher;
+
+require_once 'vendor/autoload.php';
+
+ConnectionFactory::setConfig();
 
 session_start();
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace netvod\db;
+namespace teamiut\db;
 
 use PDO;
 

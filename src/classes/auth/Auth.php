@@ -1,13 +1,13 @@
 <?php
 
-namespace netvod\Auth;
+namespace teamiut\Auth;
 
-use netvod\action\Favoris;
-use netvod\db\ConnectionFactory;
-use netvod\video\Etat\EnCours;
-use netvod\video\Etat\SerieVisionne;
+use teamiut\action\Favoris;
+use teamiut\db\ConnectionFactory;
+use teamiut\video\Etat\EnCours;
+use teamiut\video\Etat\SerieVisionne;
 use PDO;
-use netvod\user\Utilisateur;
+use teamiut\user\Utilisateur;
 
 /**
  * Class Auth

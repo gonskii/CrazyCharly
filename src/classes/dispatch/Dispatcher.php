@@ -1,25 +1,20 @@
 <?php
 
-namespace netvod\dispatch;
+namespace teamiut\dispatch;
 
-use netvod\action\AfficherSerie;
-use netvod\action\AffichageEpisode;
-use netvod\action\Deconnexion;
-use netvod\action\Commentaire;
-use netvod\action\Favoris;
-use netvod\action\Lobby;
-use netvod\action\SeConnecter;
-use netvod\action\Inscription;
-use netvod\action\MotDePasseOublie;
-use netvod\action\ChangementMotDePasse;
-
-use netvod\action\Recherche;
-
-use netvod\action\ActivationCompte;
+use teamiut\action\Accueil;
+use teamiut\action\Deconnexion;
+use teamiut\action\Lobby;
+use teamiut\action\SeConnecter;
+use teamiut\action\Inscription;
+use teamiut\action\MotDePasseOublie;
+use teamiut\action\ChangementMotDePasse;
 
 
-use netvod\Auth\Auth;
-use netvod\user\Utilisateur;
+use teamiut\action\ActivationCompte;
+
+
+use teamiut\Auth\Auth;
 
 /**
  * Class Dispatcher
@@ -71,20 +66,6 @@ class Dispatcher
                 }
                 break;
 
-            case 'afficher-serie':
-                $afficherSerie = new AfficherSerie();
-                $html = $afficherSerie->execute();
-                break;
-
-            case 'afficher-episode':
-                $afficherEpisode = new AffichageEpisode();
-                $html = $afficherEpisode->execute($numEp, $idSerie);
-                break;
-
-            case 'commentaires':
-                $commentaire = new Commentaire();
-                $html = $commentaire->execute();
-                break;
 
             case 'activation':
                 $act = new ActivationCompte();
@@ -99,18 +80,7 @@ class Dispatcher
                 }
                 break;
 
-            case 'favoris':
-                if(!Auth::verification())
-                {
-                    $connexion = new SeConnecter();
-                    $html = $connexion->execute();
-                }
-                else
-                {
-                    $favoris = new Favoris();
-                    $html = $favoris->execute();
-                }
-            break;
+
 
             case 'deconnexion':
                 $deconnexion = new Deconnexion();
@@ -127,11 +97,6 @@ class Dispatcher
                 $html = $mdp->execute();
                 break;
 
-            case 'recherche':
-                $recherche = new Recherche();
-                $html = $recherche->execute();
-                break;
-
             default:
                 if(Auth::verification())
                 {
@@ -140,7 +105,7 @@ class Dispatcher
                 }
                 else
                 {
-                    $connexion = new SeConnecter();
+                    $connexion = new Accueil();
                     $html = $connexion->execute();
                 }
                 break;

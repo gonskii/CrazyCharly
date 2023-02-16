@@ -1,10 +1,10 @@
 <?php
 
-namespace netvod\action;
+namespace teamiut\action;
 
 
-use netvod\auth\Auth;
-use netvod\dispatch\Dispatcher;
+use teamiut\auth\Auth;
+use teamiut\dispatch\Dispatcher;
 
 
 class Inscription implements Action

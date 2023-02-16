@@ -1,6 +1,6 @@
 <?php
 
-namespace netvod\utilitaire;
+namespace teamiut\utilitaire;
 
 /**
  * class Date

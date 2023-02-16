@@ -1,9 +1,9 @@
 <?php
 
-namespace netvod\user;
-use netvod\db\ConnectionFactory;
-use netvod\video\episode\Serie;
-use netvod\video\Etat\EnCours;
+namespace teamiut\user;
+use teamiut\db\ConnectionFactory;
+use teamiut\video\episode\Serie;
+use teamiut\video\Etat\EnCours;
 
 class Utilisateur 
 {

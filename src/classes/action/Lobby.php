@@ -1,12 +1,12 @@
 <?php
 
-namespace netvod\action;
+namespace teamiut\action;
 
 
 
-use netvod\render\ListeSerieRender;
-use netvod\render\SerieRender;
-use netvod\video\lists\ListeSerie;
+use teamiut\render\ListeSerieRender;
+use teamiut\render\SerieRender;
+use teamiut\video\lists\ListeSerie;
 
 class Lobby implements Action
 {
@@ -23,7 +23,7 @@ class Lobby implements Action
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>NetVod</title>
+            <title>teamiut</title>
             <script src="src/js/profile.js"></script>
             <link rel="shortcut icon" type="image/jpg" href="src/images/logo/logo-Netflix.jpg"/>
             <link rel="stylesheet" href="src/css/loby.css">
@@ -32,7 +32,7 @@ class Lobby implements Action
 
             <header>
                 <div class="headerLeft">
-                    <a>NETVOD</a>
+                    <a>teamiut</a>
                 </div>
                 <div class="headerMid">
                     <form method="post" action="?action=connexion">
