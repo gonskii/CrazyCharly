@@ -61,17 +61,18 @@ class Evenement {
         $db = ConnectionFactory::makeConnection();
         $sql = "INSERT INTO Evenement (Nom, theme, date, NBParticipants, Description, NBPlaceMax, intervenant, Lieu, image) VALUES (:nom, :theme, STR_TO_DATE(:date, '%Y-%c-%d %H:%i'), :nbParticipant, :description, :nbPlaceMax, :intervenant, :lieu, :image)";
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':theme', $this->theme);
+        $stmt->bindParam(1, $this->nom);
+        $stmt->bindParam(2, $this->theme);
         $date = $this->date->toString();
-        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(3, $date);
         $zero = 0;
-        $stmt->bindParam(':nbParticipant', $zero);
-        $stmt->bindParam(':description', $this->description);
-        $stmt->bindParam(':nbPlaceMax', $this->nbPlaceMax);
-        $stmt->bindParam(':intervenant', $this->intervenant);
-        $stmt->bindParam(':lieu', $this->lieu);
-        $stmt->bindParam(':image', $this->image);
+        $stmt->bindParam(4, $zero);
+        $stmt->bindParam(5, $this->description);
+        $stmt->bindParam(6, $this->nbPlaceMax);
+        $stmt->bindParam(7, $this->intervenant);
+        $stmt->bindParam(8, $this->lieu);
+        $image = "images/event_1";
+        $stmt->bindParam(9, $image);
         $stmt->execute();
     }
 }

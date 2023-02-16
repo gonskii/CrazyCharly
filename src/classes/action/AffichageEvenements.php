@@ -53,7 +53,7 @@ class AffichageEvenements implements Action
 
         foreach ($events as $event) {
             $dateEvent = $event->__get('date');
-            if(Date::comparerDate($dateEvent, $dateJ) < 1)
+            if(Date::comparerDate($dateEvent, $dateJ) >= 0)
             {
                 $html .=
                     "<div class='col-md-4' id='image_event'><a href=index.php?action=evenement&idEvenement=" . $event->IDEvent . "><img src=" . $event->image . "></a></div>";
