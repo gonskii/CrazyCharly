@@ -58,6 +58,13 @@ class Header implements Action
             </div>
 
             <div id="hautDePage">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+                <!-- ajouter une image en fond -->
+                <div class="bg-img" style="background-image: url('src/images/Fond.png');  background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; height: 100vh;" alt="image de fond texturee">
                 <h1 class="hautDePage">Bienvenu à</h1>
                 <h1 class="sousTexteHautDePage">Court Circuit Nancy</h1>
                 <h1 class="sousTexteHautDePage2">Le local à vivre(s) !</h1>  
