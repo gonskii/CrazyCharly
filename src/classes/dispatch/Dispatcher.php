@@ -54,7 +54,7 @@ class Dispatcher
                     $inscription = new Inscription();
                     $html = $inscription->execute();
                 } else {
-                    $lobby = new Lobby();
+                    $lobby = new Accueil();
                     $html = $lobby->execute();
                 }
                 break;
@@ -84,6 +84,7 @@ class Dispatcher
                     $connexion = new SeConnecter();
                     $html = $connexion->execute();
                 } else {
+//                    $lobby = new Lobby();
                     $lobby = new Accueil();
                     $html = $lobby->execute();
                 }
