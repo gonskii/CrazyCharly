@@ -32,7 +32,7 @@ class Inscription implements Action
 
         } else if (($_SERVER['REQUEST_METHOD'] == 'POST')) {     
             if (empty($_POST['email']) || empty($_POST['password']) || empty($_POST['password2']) || empty($_POST['nom'])
-            || empty($_POST['prenom']) || empty($_POST['genre'])) {
+            || empty($_POST['prenom'])) {
                 $html .= '<form class="form" method="post" action="?action=inscription">';
                 $html .= '<div class="title"><h1>Inscription</h1></div>';
                 $html .= '<p>Email</p><input class="input" type="email" name="email" >';
@@ -56,14 +56,12 @@ class Inscription implements Action
                 $html .= '</form>';
             } else {
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-                $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-                $nom = filter_var($_POST['nom'], FILTER_SANITIZE_STRING);
-                $prenom = filter_var($_POST['prenom'], FILTER_SANITIZE_STRING);
+                $pass =$_POST['password'];
+                $nom = $_POST['nom'];
+                $prenom = $_POST['prenom'];
                 $res = Auth::register($email, $pass, $nom, $prenom);
                 if ($res == 1) {
                     Auth::authentificate($email, $pass);
-                    $token = Auth::genererToken($email);
-                    header("Location: ?action=activation&token=$token");
                     return '';
                 } elseif ($res == -1) {
                     $html .= '<form class="form" method="post" action="?action=inscription">';

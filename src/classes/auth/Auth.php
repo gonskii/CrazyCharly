@@ -2,10 +2,7 @@
 
 namespace teamiut\Auth;
 
-use teamiut\action\Favoris;
 use teamiut\db\ConnectionFactory;
-use teamiut\video\Etat\EnCours;
-use teamiut\video\Etat\SerieVisionne;
 use PDO;
 use teamiut\user\Utilisateur;
 
@@ -38,7 +35,7 @@ class Auth
                 return null;
             }else {
                 $id = $row['IDUser'];
-                $hash = $row['motDePasse'];
+                $hash = $row['password'];
                 $role = (int)$row['role'];
                 $nom = $row['nom'];
                 $prenom = $row['prenom'];
@@ -46,9 +43,6 @@ class Auth
             }
             $user = new Utilisateur($id,$email,$hash,$nom,$prenom,$role);
             //on remplis tout les tableaux:
-            Favoris::remplirFavoris($user);
-            EnCours::remplirEnCours($user);
-            SerieVisionne::remplirVisionner($user);
             return $user;
     }
 
@@ -75,7 +69,7 @@ class Auth
         {
             // on verifie que l'email n'est pas déjà utilisé
             $db = ConnectionFactory::makeConnection();
-            $sql = "select count(email) from Utilisateur where email = ?;";
+            $sql = "select count(email) from User where email = ?;";
             $query = $db->prepare($sql);
             $query->bindParam(1, $email);
             $query->execute();
@@ -84,15 +78,12 @@ class Auth
             // si l'email n'est pas utilisé on ajoute l'utilisateur dans la base de données
             if($result[0] == 0)
             {
-                $time = date('Y-m-d H:i:s',time());
-
-                $sql = "insert into Utilisateur values (NEXT VALUE FOR seqUser, ?, ?, 1, ?, ?, ?, 0, '', 0);";
+                $sql = "insert into User values (1, ?, ?, ?, ?, 1);";
                 $query = $db->prepare($sql);
                 $query->bindParam(1, $email);
                 $query->bindParam(2, $hash);
                 $query->bindParam(3, $nom);
                 $query->bindParam(4, $prenom);
-                $query->bindParam(5, $sexe);
                 $query->execute();
                 $query->closeCursor();
                 return 1;
@@ -135,29 +126,6 @@ class Auth
         return $row != false;
     }
 
-    /**
-     * methode genererToken qui permet de generer un token pour l'oubli de mot de passe
-     * @param string $email l'email que l'utilisateur a entré
-     * @return string le token
-     */
-    public static function genererToken(string $email): string
-    {
-        // on génère un token
-        $token = bin2hex(random_bytes(32));
-        $expire = date('Y-m-d H:i:s',time() + 120);
-
-        // on ajoute le token dans la base de données
-        $db = ConnectionFactory::makeConnection();
-        $sql = "update Utilisateur set token = ?, expireToken = ? where email = ?;";
-        $query = $db->prepare($sql);
-        $query->bindParam(1, $token);
-        $query->bindParam(2, $expire);
-        $query->bindParam(3, $email);
-        $query->execute();
-        $query->closeCursor();
-
-        return $token;
-    }
 
     /**
      * methode changerMotDePasse qui permet de changer le mot de passe d'un utilisateur
