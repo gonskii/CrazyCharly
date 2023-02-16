@@ -25,6 +25,7 @@
 /vendors/*
 
 *.ini
+env.json
 
 # Compiled class file
 *.class
