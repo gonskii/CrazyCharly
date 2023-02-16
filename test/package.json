@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "mariadb": "^3.1.0"
   }
 }

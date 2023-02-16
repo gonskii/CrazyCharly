@@ -60,22 +60,24 @@ body {
     background-color: #F6EEE3;
     color: #ffffff;
     text-align: center;
+    text-decoration: none;
 }
 
 #seConnecter {
     color: #F6EEE3;
     background-color: #084C4B;
-    border-radius: 30%;
+    border-radius: 15px;
 }
 
 .hautDePage {
     color: #FCC43D;
-    font-size: 1.5em;
+    font-size: 3em;
+    padding-top: 1em;
 }
 
 .sousTexteHautDePage {
     color: #084C4B;
-    font-size: 2.2em;
+    font-size: 4em;
 }
 
 .sousTexteHautDePage2 {
@@ -89,3 +91,8 @@ body {
 .formulaireCreation {
         color: #084C4B;
 }
+
+a {
+    text-decoration: none;
+}
+

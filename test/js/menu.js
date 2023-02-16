@@ -1,3 +1,5 @@
+const mariadb = require('mariadb');
+
 console.log("menu.js loaded");
 
 // Create a "close" button and append it to each list item
@@ -29,7 +31,6 @@ function newProduct() {
     console.log(idContainer)
     var productContainer = document.getElementById(idContainer);
     var productTitleInput = document.getElementById("product-title");
-    var productCatInput = document.getElementById('category-select');
 
     var title = productTitleInput.value;
 
@@ -62,7 +63,10 @@ function newProduct() {
     }
 }
 
-function sauvegarderCarte() {
+
+async function sauvegarderCarte() {
+    console.log("sauvegarderCarte")
+    try {
     // Récupérer tous les éléments "produit" de la carte
     var produits = document.querySelectorAll(".product");
 
@@ -83,9 +87,19 @@ function sauvegarderCarte() {
     });
 
     // Envoyer le tableau d'objets JSON à votre base de données
-    // créer une requête POST à l'URL de votre base de données
-    // avec le tableau d'objets JSON en tant que corps de la requête
-    // Code pour enregistrer le tableau de produits dans la base de données ici
+    // recupereles données a partir du ../../env.json
+    const dbLog = JSON.parse('../../env.json');
+    console.log(dbLog)
+    const connection = await mariadb.createConnection(dbLog);
+    // drop table si elle existe deja
+    await connection.query("DROP TABLE IF EXISTS carte");
+    // creation de la table
+    await connection.query("CREATE TABLE carte (id INT NOT NULL AUTO_INCREMENT, categorie VARCHAR(255), titre VARCHAR(255), PRIMARY KEY (id))");
+    // insertion des données
+    await connection.query("INSERT INTO carte (categorie, titre) VALUES ?", [carte]);
+    // fermeture de la connexion
+    connection.end();
+    } catch (err) {
+        console.log(err);
+    }
 }
-
-

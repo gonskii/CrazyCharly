@@ -1,0 +1,18 @@
+body {
+    background-color: #F6EEE3;
+    color: #084C4B;
+}
+
+a {
+    text-decoration : none;
+    color: #FCC43D;
+    font-weight: bold;
+}
+
+button {
+    background-color: #084C4B;
+    color: #F6EEE3;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+}

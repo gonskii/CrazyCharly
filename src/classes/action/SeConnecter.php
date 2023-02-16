@@ -3,7 +3,7 @@
 namespace teamiut\action;
 
 
-use teamiut\Auth\Auth;
+use teamiut\auth\Auth as Auth;
 
 /**
  * class SeConnecter
@@ -17,15 +17,20 @@ class SeConnecter implements Action
      */
     public function execute(): string
     {
-
+        $header = new \teamiut\action\Header();
+        $html = $header->execute();
         // header du site
-        $html = <<<END
+        $html .= <<<END
             <!DOCTYPE html>
             <html lang="fr"> <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
             <title>Connexion</title>
+            <link rel="stylesheet" href="src/css/styleLogin.css">
+            </head> 
+            <body class="text-center">
             END;
 
         // si la méthode est GET on affiche le formulaire de connexion
@@ -83,6 +88,11 @@ class SeConnecter implements Action
             }
 
         }
+        $html .= <<<END
+            </body>
+            </html>
+END;
+
         return $html;
 
     }

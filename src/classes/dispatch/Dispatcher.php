@@ -8,6 +8,7 @@ use teamiut\action\CreerEvenement;
 use teamiut\action\Deconnexion;
 use teamiut\action\Lobby;
 use teamiut\action\PropositionEvenement;
+use teamiut\action\Restaurant;
 use teamiut\action\SeConnecter;
 use teamiut\action\Inscription;
 use teamiut\action\MotDePasseOublie;
@@ -50,6 +51,27 @@ class Dispatcher
                     $inscription = new Inscription();
                     $html = $inscription->execute();
                 } else {
+                    $lobby = new Lobby();
+                    $html = $lobby->execute();
+                }
+                break;
+
+            case 'restaurant':
+                if (!Auth::verification()) {
+                    $seConnecter = new SeConnecter();
+                    $html = $seConnecter->execute();
+                } else {
+                    $restaurant = new Restaurant();
+                    $html = $restaurant->execute();
+                }
+                break;
+
+            case 'lobby':
+                if (!Auth::verification()) {
+                    $connexion = new SeConnecter();
+                    $html = $connexion->execute();
+                } else {
+                    $lobby = new Lobby();
                     $lobby = new Accueil();
                     $html = $lobby->execute();
                 }
