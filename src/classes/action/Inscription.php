@@ -19,6 +19,7 @@ class Inscription implements Action
         $html .= '<meta charset="UTF-8">';
         $html .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
         $html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+        $html .= '<link rel="stylesheet" href="src/css/styleLogin.css">';
         $html .= '<title>Inscription</title>';
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -30,7 +31,7 @@ class Inscription implements Action
             $html .= '<p>Password confirmation</p><input class="input" type="password" name="password2" >';
             $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
             $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-            $html .= '<button type="submit">Inscription</button>';
+            $html .= '<button type="submit" id="btnInsc">Inscription</button>';
             $html .= '</form>';
 
         } else if (($_SERVER['REQUEST_METHOD'] == 'POST')) {     
@@ -55,7 +56,7 @@ class Inscription implements Action
                 $html .= '<div class="error"><p>Les mots de passes ne sont pas identiques !</p></div>';
                 $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
                 $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-                $html .= '<button type="submit">Inscription</button>';
+                $html .= '<button type="submit" id=" ">Inscription</button>';
                 $html .= '</form>';
             } else {
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
