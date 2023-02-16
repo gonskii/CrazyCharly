@@ -1,4 +1,11 @@
 body {
     text-align: center;
     background-color: #F6EEE3;
+    color: #084C4B;
+}
+
+a {
+    text-decoration : none;
+    color: #FCC43D;
+    font-weight: bold;
 }
