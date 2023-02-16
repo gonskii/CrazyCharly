@@ -58,7 +58,9 @@ class AffichageEvenement
 
                             if(!$bol)
                             {
-                                echo "tu peux t'inscrire ";
+                                $html .= <<< END
+                                <p>Vous êtes inscris</p>
+                                END;
                             }
                         }
                         else
