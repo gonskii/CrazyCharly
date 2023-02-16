@@ -3,6 +3,7 @@
 namespace teamiut\tables;
 
 use teamiut\utilitaire\Date as Date;
+use teamiut\db\ConnectionFactory as ConnectionFactory;
 
 class Evenement {
     private int $IDEvent;
@@ -39,5 +40,20 @@ class Evenement {
         $stmt->execute();
         $result = $stmt->fetch();
         return new Evenement($result['IDEvent'], $result['nom'], new Date($result['date']), $result['nbParticipant'], $result['description'], $result['nbPlaceMax'], $result['intervenant'], $result['lieu'], $result['image']);
+    }
+
+    public function save() {
+        $db = ConnectionFactory::makeConnection();
+        $sql = "INSERT INTO Evenement (nom, date, nbParticipant, description, nbPlaceMax, intervenant, lieu, image) VALUES (:nom, :date, :nbParticipant, :description, :nbPlaceMax, :intervenant, :lieu, :image)";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':nom', $this->nom);
+        $stmt->bindParam(':date', $this->date);
+        $stmt->bindParam(':nbParticipant', $this->nbParticipant);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':nbPlaceMax', $this->nbPlaceMax);
+        $stmt->bindParam(':intervenant', $this->intervenant);
+        $stmt->bindParam(':lieu', $this->lieu);
+        $stmt->bindParam(':image', $this->image);
+        $stmt->execute();
     }
 }
