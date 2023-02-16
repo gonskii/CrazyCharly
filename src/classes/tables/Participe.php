@@ -6,7 +6,8 @@ use teamiut\db\ConnectionFactory as ConnectionFactory;
 class Participe {
     private array $participe;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->participe = array();
     }
 
