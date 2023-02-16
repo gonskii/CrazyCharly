@@ -1,0 +1,62 @@
+#logoHaut {
+    height: 0.5em;
+    width: 0.5em;
+}
+
+#headerUn {
+    background-color: #FCC43D;
+    color: #ffffff;
+    text-align: center;
+    padding: 2em;
+}
+
+#headerUn a {
+    padding-left: 1.5em;
+    color-
+}
+
+.logoHaut {
+    float: right;
+    margin-right: 1.5em;
+    padding-left: 1.5em;
+    height: 0.5em;
+    width: 0.5em;
+}
+
+
+
+#headerDeux {
+    background-color: #FF5500;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+}
+
+body {
+    background-color: #F6EEE3;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+}
+
+#seConnecter:hover {
+    color: #000000;
+    text-align: center;
+    padding: 5px;
+    transition: transform .1s;
+}
+
+#seConnecter:hover {
+    background-color: #FF5500;
+    color: #000000;
+    text-align: center;
+    padding: 5px;
+}
+
+#hautDePage {
+
+}
+
+* {
+    font-family: 'Marine Sikona', serif;
+}
