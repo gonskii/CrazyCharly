@@ -5,7 +5,9 @@ namespace teamiut\action;
 
 use teamiut\action\Header as Header;
 use teamiut\action\Action as Action;
+use teamiut\auth\Auth;
 use teamiut\tables\Evenement as Evenement;
+use teamiut\utilitaire\Date;
 
 class AffichageEvenements implements Action
 {
@@ -34,11 +36,29 @@ class AffichageEvenements implements Action
         <title>Evénements</title>
         END;
 
+
+        if(Auth::verification() && Auth::getRank() == 100)
+        {
+            $html .= <<<END
+                <a href="?action=cree_evenement">Créer un évenement</a>
+            END;
+
+        }
+
+
         //loop on each event
         $html.= "<div class=container>";
         $html.= "<div class=row>";
+        $dateJour = date("Y-m-d H:i");
+        $dateJ = new Date($dateJour);
+
         foreach ($events as $event) {
-            $html.= "<div class='col-md-4' id='image_event'><a href=index.php?action=evenement&idEvenement=".$event->IDEvent."><img src=".$event->image."></a></div>";
+            $dateEvent = $event->__get('date');
+            if(Date::comparerDate($dateEvent, $dateJ) < 1)
+            {
+                $html .=
+                    "<div class='col-md-4' id='image_event'><a href=index.php?action=evenement&idEvenement=" . $event->IDEvent . "><img src=" . $event->image . "></a></div>";
+            }
         }
         $html.= "</div>";
         $html.= "</div>";

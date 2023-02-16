@@ -60,6 +60,7 @@ body {
     background-color: #F6EEE3;
     color: #ffffff;
     text-align: center;
+    text-decoration: none;
 }
 
 #seConnecter {
@@ -74,12 +75,26 @@ body {
 
 .hautDePage {
     color: #FCC43D;
+    font-size: 1.5em;
 }
 
 .sousTexteHautDePage {
+    color: #084C4B;
+    font-size: 2.2em;
+}
+
+.sousTexteHautDePage2 {
     color: #084C4B;
 }
 
 * {
     font-family: 'Marine Sikona', serif;
+}
+
+.formulaireCreation {
+        color: #084C4B;
+}
+
+a {
+    text-decoration: none;
 }

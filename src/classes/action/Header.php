@@ -3,6 +3,7 @@
 namespace teamiut\action;
 
 use teamiut\action\Action as Action;
+use teamiut\auth\Auth;
 
 class Header implements Action
 {
@@ -31,19 +32,35 @@ class Header implements Action
                 <a class="logoHaut" href="https://www.facebook.com/courtcircuitVoltaire/"><img src="src/images/facebook.png" alt="Logo facebook"></a>
             </div>
             <div id="headerDeux">
-                <a href="" class="headerDeux">Accueil</a>
+                <a href="?action=accueil" class="headerDeux">Accueil</a>
                 <a href="" class="headerDeux">Le restaurant</a>
-                <a href="" id="decalage" class="headerDeux">Evenement</a>
+                <a href="?action=afficherEvenements" id="decalage" class="headerDeux">Evenement</a>
                 <img id="logoHaut" src="src/images/logo-courcircuitbon.png" alt="Logo court Circuit">
                 <a href="" class="headerDeux">Notre engagement</a>
                 <a href="" class="headerDeux">Contact</a>
-                <a id="seConnecter" class="headerDeux" href="?action=connexion">SE CONNECTER</a>
+        END;
+
+        if(Auth::verification())
+        {
+            $html .= <<<END
+                <a id="seConnecter" class="headerDeux" href="?action=deconnexion">Déconnexion</a>
+            END;
+        }
+        else
+        {
+            $html .= <<<END
+            <a id="seConnecter" class="headerDeux" href="?action=connexion">SE CONNECTER</a>
+            END;
+        }
+
+            $html .= <<<END
+
             </div>
 
             <div id="hautDePage">
                 <h1 class="hautDePage">Bienvenu à</h1>
                 <h1 class="sousTexteHautDePage">Court Circuit Nancy</h1>
-                <h1 class="sousTexteHautDePage">Le local à vivre(s) !</h1>
+                <h1 class="sousTexteHautDePage2">Le local à vivre(s) !</h1>  
         END;
 
 

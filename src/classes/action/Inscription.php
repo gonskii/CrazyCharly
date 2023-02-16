@@ -11,7 +11,10 @@ class Inscription implements Action
 {
     public function execute(): string
     {
-        $html = '<!DOCTYPE html>';
+        $header = new Header();
+        $html = $header->execute();
+
+        $html .= '<!DOCTYPE html>';
         $html .= '<html lang="fr"> <head>';
         $html .= '<meta charset="UTF-8">';
         $html .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">';

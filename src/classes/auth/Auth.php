@@ -167,26 +167,11 @@ class Auth
         return $row['expireToken'] >= date('Y-m-d H:i:s',time());
     }
 
-    /**
-     * methode activerCompte qui permet d'activer le compte d'un utilisateur
-     * @param string $token le token que l'utilisateur a entré
-     */
-    public static function activerCompte(string $token) : void{
-        $db = ConnectionFactory::makeConnection();
-        $validite = $db->prepare("select expireToken from Utilisateur where token = ?;");
-        $validite->bindParam(1, $token);
-        $validite->execute();
-        $row = $validite->fetch(PDO::FETCH_ASSOC);
-        $validite->closeCursor();
-        if($row['expireToken'] >= date('Y-m-d H:i:s',time())){
-            $sql = "update Utilisateur set activer = 1 where token = ?;";
-            $query = $db->prepare($sql);
-            $query->bindParam(1, $token);
-            $query->execute();
-            $query->closeCursor();
-        }else{
-            header("Location: ?action=connexion");
-        }
+
+    public static function getRank() : int
+    {
+        $user = unserialize($_SESSION['user']);
+        return $user->__get('role');
     }
 
 }

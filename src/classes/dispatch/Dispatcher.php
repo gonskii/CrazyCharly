@@ -72,6 +72,7 @@ class Dispatcher
                     $html = $connexion->execute();
                 } else {
                     $lobby = new Lobby();
+                    $lobby = new Accueil();
                     $html = $lobby->execute();
                 }
                 break;
@@ -109,14 +110,14 @@ class Dispatcher
                 $html = $mdp->execute();
                 break;
 
+            case 'accueil':
+                $accueil = new Accueil();
+                $html = $accueil->execute();
+                break;
+
             case 'changementMotDePasse':
                 $mdp = new ChangementMotDePasse();
                 $html = $mdp->execute();
-                break;
-
-            case 'accueil':
-                $connexion = new Accueil();
-                $html = $connexion->execute();
                 break;
 
             case 'proposition_evenement':
@@ -129,7 +130,7 @@ class Dispatcher
                 }
                 break;
             case 'cree_evenement':
-                if (Auth::verification()) {
+                if (Auth::verification() && Auth::getRank() == 100) {
                     $creerEvenement = new CreerEvenement();
                     $html = $creerEvenement->execute();
                 } else {
@@ -138,13 +139,8 @@ class Dispatcher
                 }
                 break;
             default:
-                if (Auth::verification()) {
-                    $lobby = new Lobby();
-                    $html = $lobby->execute();
-                } else {
-                    $connexion = new Accueil();
-                    $html = $connexion->execute();
-                }
+                $connexion = new Accueil();
+                $html = $connexion->execute();
                 break;
 
         }
