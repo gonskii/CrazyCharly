@@ -5,6 +5,7 @@ namespace teamiut\action;
 use teamiut\action\Action;
 use teamiut\auth\Auth;
 use teamiut\tables\Evenement;
+use teamiut\tables\Participe;
 
 class AffichageEvenement
 {
@@ -30,12 +31,12 @@ class AffichageEvenement
             {
                 if($evenement->IDEvent == $idEvenement)
                 {
-                    $date = $evenement->date;
+                    $date = $evenement->date->toString();
                     $existe = true;
                     $html .= <<< END
                     <p>Nom : $evenement->nom</p>    
                     <p>Theme : $evenement->theme</p>
-                    <p>Date : $date->jour/$date->mois/$date->annee</p>
+                    <p>Date : $date</p>
                     <p>Nombre de participant :  nombre de participant au maximum:  $evenement->nbParticipant</p>
                     <p>Description : $evenement->description</p> 
                     <p>Intervenant : $evenement->intervenant</p>
@@ -51,8 +52,16 @@ class AffichageEvenement
                         $bool = false;
                         if(Auth::verification())
                         {
-                            $bool = true;
-                            echo "true";
+                            $user = unserialize($_SESSION['user']);
+                            $idUser = $user->IDuser;
+                            $bol = Participe::verifierParticipation($idUser,$idEvenement);
+
+                            if(!$bol)
+                            {
+                                $html .= <<< END
+                                <p>Vous êtes inscris</p>
+                                END;
+                            }
                         }
                         else
                         {
