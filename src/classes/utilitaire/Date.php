@@ -8,7 +8,6 @@ namespace teamiut\utilitaire;
  */
 class Date
 {
-
     private int $minutes;
     private int $heures;
     private int $jour;
@@ -46,7 +45,7 @@ class Date
      * @return string la date sous forme de string
      */
     public function toString() : string {
-        return "$this->annee-$this->mois-$this->jour $this->heures:$this->minutes";
+        return "je suis la date";
     }
 
     public static function comparerDate(Date $d1, Date $d2):int

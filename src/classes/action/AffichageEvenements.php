@@ -14,7 +14,6 @@ class AffichageEvenements implements Action
 
     public function execute(): string
     {
-
         //get all events
         $events = Evenement::getAllEvents();
 

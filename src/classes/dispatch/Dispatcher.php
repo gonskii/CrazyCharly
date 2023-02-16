@@ -13,6 +13,7 @@ use teamiut\action\SeConnecter;
 use teamiut\action\Inscription;
 use teamiut\action\MotDePasseOublie;
 use teamiut\action\ChangementMotDePasse;
+use teamiut\action\AffichageEvenement;
 
 
 use teamiut\action\ActivationCompte;
@@ -42,7 +43,7 @@ class Dispatcher
     {
         // on récupère les données dans la requetes
         $action = (isset($_GET['action'])) ? $_GET['action'] : null;
-
+        $idEvenement = intval((isset($_GET['idEvenement'])) ? $_GET['idEvenement'] : null);
 
         $html = '';
         switch ($action) {
@@ -147,6 +148,11 @@ class Dispatcher
                     $connexion = new Accueil();
                     $html = $connexion->execute();
                 }
+                break;
+            case 'evenement':
+                $afficherEvenement = new AffichageEvenement();
+                $html = $afficherEvenement->execute($idEvenement);
+
                 break;
             default:
                 $connexion = new Accueil();
