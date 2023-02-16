@@ -5,6 +5,7 @@ namespace teamiut\action;
 
 use teamiut\action\Header as Header;
 use teamiut\action\Action as Action;
+use teamiut\auth\Auth;
 use teamiut\tables\Evenement as Evenement;
 
 class AffichageEvenements implements Action
@@ -33,6 +34,16 @@ class AffichageEvenements implements Action
         <link rel="stylesheet" href="src/css/affichageEvenements.css">
         <title>Evénements</title>
         END;
+
+
+        if(Auth::verification())
+        {
+            $html .= <<<END
+                <a href="?action=creerEvenement">Créer un évenement</a>
+            END;
+
+        }
+
 
         //loop on each event
         $html.= "<div class=container>";

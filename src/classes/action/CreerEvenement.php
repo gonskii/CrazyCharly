@@ -2,7 +2,6 @@
 
 namespace teamiut\action;
 
-use teamiut\action\Action;
 use teamiut\db\ConnectionFactory;
 
 
@@ -11,7 +10,10 @@ class CreerEvenement implements Action
     function execute(): string
     {
 
-        $html = <<<END
+        $header = new Header();
+        $html = $header->execute();
+
+        $html .= <<<END
             <!DOCTYPE html>
             <html lang="fr"> <head>
             <meta charset="UTF-8">
@@ -23,7 +25,7 @@ class CreerEvenement implements Action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $html .= <<<END
             <body>
-                <form method="POST" action="?action=creerEvenement">
+                <form class="formulaireCreation" method="POST" action="?action=creerEvenement">
                 <label for="nom">Nom</label> <input type="text"  name="nom" id="nom" value=""/><br />
                 <label for="theme">Theme</label> <input type="text"  name="theme" id="theme" value=""/><br />
                 <label for="jour">Jour de l'évenement</label> <input type="date"  name="jour" id="jour" value=""/><br />
