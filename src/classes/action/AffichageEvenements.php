@@ -2,6 +2,8 @@
 
 namespace teamiut\action;
 
+
+use teamiut\action\Header as Header;
 use teamiut\action\Action as Action;
 use teamiut\tables\Evenement as Evenement;
 
@@ -14,8 +16,12 @@ class AffichageEvenements implements Action
         //get all events
         $events = Evenement::getAllEvents();
 
+        $header = new Header();
+        $html = $header->execute();
+
+
         //display all events in a as a 3 columns grid
-        $html = <<<END
+        $html .= <<<END
         <!DOCTYPE html>
         <html lang="fr"> <head>
         <meta charset="UTF-8">

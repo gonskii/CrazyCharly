@@ -1,5 +1,13 @@
 body {
     max-width: 100%;
+    background-color: #F6EEE3;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+}
+
+.row {
+    background-color: #F6EEE3;
 }
 
 img {
@@ -7,7 +15,7 @@ img {
     float: left;
     max-width: 100%;
     margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
     border-radius: 10px;
 }

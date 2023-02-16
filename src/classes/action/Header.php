@@ -1,7 +1,8 @@
 <?php
 
+namespace teamiut\action;
 
-use teamiut\action\Action;
+use teamiut\action\Action as Action;
 
 class Header implements Action
 {
