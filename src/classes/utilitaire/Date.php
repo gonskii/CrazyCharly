@@ -46,7 +46,7 @@ class Date
      * @return string la date sous forme de string
      */
     public function toString() : string {
-        return "$this->jour-$this->mois-$this->annee $this->heures:$this->minutes";
+        return "$this->annee-$this->mois-$this->jour $this->heures:$this->minutes";
     }
 
     public static function comparerDate(Date $d1, Date $d2):int
