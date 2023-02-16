@@ -1,60 +1,83 @@
-#logoHaut {
-    height: 0.5em;
-    width: 0.5em;
-}
 
 #headerUn {
     background-color: #FCC43D;
     color: #ffffff;
     text-align: center;
-    padding: 2em;
+    padding: 1.5em;
 }
 
 #headerUn a {
     padding-left: 1.5em;
-    color-
+    color: black;
 }
 
 .logoHaut {
     float: right;
-    margin-right: 1.5em;
+    padding-right: 1.5em;
     padding-left: 1.5em;
     height: 0.5em;
     width: 0.5em;
 }
 
+#logoHaut {
+    background-color: #F6EEE3;
+    border-radius: 60%;
+    height: 2.5em;
+    width: 2.5em;
+}
+
+#decalage {
+    padding-right: 1.5em;
+}
 
 
 #headerDeux {
     background-color: #FF5500;
     color: #ffffff;
     text-align: center;
-    padding: 5px;
+    padding: 1.2em;
+}
+
+#headerDeux a {
+    color: #F6EEE3;
+    padding: 1.1em;
+}
+
+.headerDeux {
+    height: 2.5em;
+    width: 2.5em;
+    transition: transform 1.2s;
+}
+
+.headerDeux:hover {
+    font-size: 1.5em;
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
 }
 
 body {
     background-color: #F6EEE3;
     color: #ffffff;
     text-align: center;
-    padding: 5px;
 }
 
-#seConnecter:hover {
-    color: #000000;
-    text-align: center;
-    padding: 5px;
-    transition: transform .1s;
-}
-
-#seConnecter:hover {
-    background-color: #FF5500;
-    color: #000000;
-    text-align: center;
-    padding: 5px;
+#seConnecter {
+    color: #F6EEE3;
+    background-color: #084C4B;
+    border-radius: 30%;
 }
 
 #hautDePage {
 
+}
+
+.hautDePage {
+    color: #FCC43D;
+}
+
+.sousTexteHautDePage {
+    color: #084C4B;
 }
 
 * {

@@ -1,12 +1,10 @@
 <?php
 
-namespace teamiut\action;
 
-use classes\auth\Auth;
+use teamiut\action\Action;
 
-class Accueil implements Action
+class Header implements Action
 {
-
     public function execute(): string
     {
         // header du site
