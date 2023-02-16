@@ -189,19 +189,4 @@ class Auth
         }
     }
 
-    /**
-     * methode etreActiverCompte qui permet de savoir si un compte est activer
-     * @param string $email l'email que l'utilisateur a entré
-     * @return bool true si le compte est activer, false sinon
-     */
-    public static function etreActiverCompte(string $email) : bool {
-        $db = ConnectionFactory::makeConnection();
-        $sql = "select activer from Utilisateur where email = ?;";
-        $query = $db->prepare($sql);
-        $query->bindParam(1, $email);
-        $query->execute();
-        $row = $query->fetch();
-        $query->closeCursor();
-        return $row['activer'] == 1;
-    }
 }

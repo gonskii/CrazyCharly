@@ -4,16 +4,12 @@ namespace teamiut\action;
 
 
 
-use teamiut\render\ListeSerieRender;
-use teamiut\render\SerieRender;
-use teamiut\video\lists\ListeSerie;
 
 class Lobby implements Action
 {
     public function execute(): string
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            header("Location: ?action=recherche&recherche=". $_POST['inputRecherche']);
             $html = "";
         }
         else{
@@ -24,42 +20,23 @@ class Lobby implements Action
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>teamiut</title>
-            <script src="src/js/profile.js"></script>
-            <link rel="shortcut icon" type="image/jpg" href="src/images/logo/logo-Netflix.jpg"/>
-            <link rel="stylesheet" href="src/css/loby.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             </head><body>
 
             <header>
                 <div class="headerLeft">
                     <a>teamiut</a>
                 </div>
-                <div class="headerMid">
-                    <form method="post" action="?action=connexion">
-                        <input type="search" name="inputRecherche" class="inputRecherche" required>
-                        <button class="btnRecherche" type="submit" name="submit" value="recherche"><i class="fa-solid fa-search"></i></button>
-                    </form>
-                </div>
+               
                 <div class="headerRight">
                     <a onclick="profilePage()"><i  class="fa-solid fa-user"></i></a>
                 </div>
             </header>
             END;
 
-        $listeSerie = new ListeSerie();
-        $listeSerieRender = new ListeSerieRender($listeSerie->getSeries());
 
         //$html .= $listeSerieRender->render();
         $html .= "<div class=\"content\">";
-        $html .= $listeSerieRender->renderEncours();
-        $html .= $listeSerieRender->renderVisionne();
-        $html .= $listeSerieRender->renderFavoris();
-        $html .= $listeSerieRender->renderGenre("Comédie");
-        $html .= $listeSerieRender->renderGenre("Horreur");
-        $html .= $listeSerieRender->renderGenre("Thriller");
-        $html .= $listeSerieRender->renderParClassement();
-        $html .= $listeSerieRender->renderPlusLongPlusPlusCourt();
-        $html .= $listeSerieRender->renderDateSortie();
+        //TODO
         $html .= "</div>";
 
         $html .= "<div class=\"content-profile\">";
@@ -68,7 +45,6 @@ class Lobby implements Action
         $html .= '<a>Email : ' . unserialize($_SESSION['user'])->email . '</a><br>';
         $html .= '<a>Nom : ' . unserialize($_SESSION['user'])->nom . '</a><br>';
         $html .= '<a>Prenom : ' . unserialize($_SESSION['user'])->prenom . '</a><br>';
-        $html .= '<a>Sexe : ' . unserialize($_SESSION['user'])->sexe . '</a><br>';
 
         // bouton de déconnexion
         $html .= '<a class="btn-deconnexion" href="?action=deconnexion"><i class="fa-solid fa-arrow-right-from-bracket"></i>  Déconnexion</a>';

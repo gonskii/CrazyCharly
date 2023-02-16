@@ -26,7 +26,9 @@ class Dispatcher
     /**
      * constructeur vide de la classe Dispatcher
      */
-    public function __construct(){}
+    public function __construct()
+    {
+    }
 
     /**
      * fonction dispatch qui permet de dispatcher les requetes vers les actions correspondantes
@@ -36,31 +38,25 @@ class Dispatcher
     {
         // on récupère les données dans la requetes
         $action = (isset($_GET['action'])) ? $_GET['action'] : null;
-        $idSerie = (isset($_GET['idSerie'])) ? $_GET['idSerie'] : null;
-        $numEp = (isset($_GET['numEp'])) ? $_GET['numEp'] : null;
 
 
         $html = '';
         switch ($action) {
             case 'inscription':
-                if(!Auth::verification()) {
+                if (!Auth::verification()) {
                     $inscription = new Inscription();
                     $html = $inscription->execute();
-                }
-                else
-                {
+                } else {
                     $lobby = new Lobby();
                     $html = $lobby->execute();
                 }
                 break;
 
             case 'lobby':
-                if(!Auth::verification()) {
+                if (!Auth::verification()) {
                     $connexion = new SeConnecter();
                     $html = $connexion->execute();
-                }
-                else
-                {
+                } else {
                     $lobby = new Lobby();
                     $html = $lobby->execute();
                 }
@@ -73,8 +69,7 @@ class Dispatcher
                 break;
 
             case 'profile':
-                if(!Auth::verification())
-                {
+                if (!Auth::verification()) {
                     $connexion = new SeConnecter();
                     $html = $connexion->execute();
                 }
@@ -100,14 +95,16 @@ class Dispatcher
                 $html = $mdp->execute();
                 break;
 
+            case 'accueil':
+                $connexion = new Accueil();
+                $html = $connexion->execute();
+                break;
+
             default:
-                if(Auth::verification())
-                {
+                if (Auth::verification()) {
                     $lobby = new Lobby();
                     $html = $lobby->execute();
-                }
-                else
-                {
+                } else {
                     $connexion = new Accueil();
                     $html = $connexion->execute();
                 }

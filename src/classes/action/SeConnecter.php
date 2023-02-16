@@ -17,6 +17,7 @@ class SeConnecter implements Action
      */
     public function execute(): string
     {
+
         // header du site
         $html = <<<END
             <!DOCTYPE html>
@@ -59,9 +60,9 @@ class SeConnecter implements Action
                     END;
             } else {
                 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-                $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+                $pass = $_POST['password'];
                 $user = Auth::authentificate($email, $pass);
-                if ($user != null && Auth::etreActiverCompte($_POST['email']) == 1) {
+                if ($user != null) {
                     $_SESSION['user'] = serialize($user);
                     header("Location: ?action=lobby");
                     return '';
