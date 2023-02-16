@@ -171,7 +171,7 @@ class Auth
     public static function getRank() : int
     {
         $user = unserialize($_SESSION['user']);
-        return $user->getRole();
+        return $user->__get('role');
     }
 
 }

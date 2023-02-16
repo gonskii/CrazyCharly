@@ -60,7 +60,7 @@ class Header implements Action
             <div id="hautDePage">
                 <h1 class="hautDePage">Bienvenu à</h1>
                 <h1 class="sousTexteHautDePage">Court Circuit Nancy</h1>
-                <h1 class="sousTexteHautDePage">Le local à vivre(s) !</h1>  
+                <h1 class="sousTexteHautDePage2">Le local à vivre(s) !</h1>  
         END;
 
 

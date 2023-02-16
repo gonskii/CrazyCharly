@@ -74,9 +74,15 @@ body {
 
 .hautDePage {
     color: #FCC43D;
+    font-size: 1.5em;
 }
 
 .sousTexteHautDePage {
+    color: #084C4B;
+    font-size: 2.2em;
+}
+
+.sousTexteHautDePage2 {
     color: #084C4B;
 }
 
