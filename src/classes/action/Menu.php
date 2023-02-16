@@ -10,7 +10,14 @@ class Menu implements Action
         $html = $header->execute();
         $html .= <<<END
             <body>
-                <img id="imageMenu" src="src/images/menu.jpg" alt="Menu">
+             <!-- ajoute le menu en utilisant l image src/images/menu.jpg grace a bootstrap sans rendre l'image trop haute-->
+            <div class="container">
+                <div class="row text-center " style=".img-max {
+  max-width: 500px;
+  width:100%;
+}">
+                        <img src="src/images/menu.jpg" class="img-fluid w-40" alt="Responsive image">
+                </div>  
              </body>
 END;
         return $html;
