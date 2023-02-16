@@ -1,6 +1,6 @@
 <?php
 
-namespace teamiut\Auth;
+namespace teamiut\auth;
 
 use teamiut\db\ConnectionFactory;
 use PDO;
