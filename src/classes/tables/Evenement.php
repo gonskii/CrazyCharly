@@ -47,7 +47,8 @@ class Evenement {
         $stmt->bindParam(':nom', $this->nom);
         $date = $this->date->toString();
         $stmt->bindParam(':date', $date);
-        $stmt->bindParam(':nbParticipant', $this->nbParticipant);
+        $zero = 0;
+        $stmt->bindParam(':nbParticipant', $zero);
         $stmt->bindParam(':description', $this->description);
         $stmt->bindParam(':nbPlaceMax', $this->nbPlaceMax);
         $stmt->bindParam(':intervenant', $this->intervenant);
