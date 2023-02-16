@@ -11,6 +11,8 @@ class Accueil implements Action
     {
         $header = new Header();
         $html = $header->execute();
+        $footer = new Footer();
+        $html .= $footer->execute();
         return $html;
     }
 }
