@@ -66,6 +66,16 @@ class Dispatcher
                 }
                 break;
 
+            case 'faireReservation':
+                if (!Auth::verification()) {
+                    $seConnecter = new SeConnecter();
+                    $html = $seConnecter->execute();
+                } else {
+                    $faireReservation = new FaireReservation();
+                    $html = $faireReservation->execute();
+                }
+                break;
+
             case 'lobby':
                 if (!Auth::verification()) {
                     $connexion = new SeConnecter();

@@ -62,7 +62,11 @@ class Restaurant implements Action
             }
         }
 
-        $html .= "</body></ul>";
+        $html .= <<<END
+        <h3>Venez manger au restaurant :</h3>
+        <a href='?action=faireReservation'>Réserver une table</a>
+        </body></ul>
+        END;
 
 
         return $html;
