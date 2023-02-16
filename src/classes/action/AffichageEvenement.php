@@ -13,7 +13,6 @@ class AffichageEvenement
     {
         $header = new Header();
         $html = $header->execute();
-
         $html .= <<<END
             <!DOCTYPE html>
             <html lang="fr">
@@ -25,6 +24,7 @@ class AffichageEvenement
             <title>Court-circuit</title>
             </head><body>
             END;
+
 
         $listeEvenements = Evenement::getAllEvents();
         $existe = false;
