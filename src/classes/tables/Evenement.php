@@ -6,7 +6,6 @@ use teamiut\utilitaire\Date as Date;
 use teamiut\db\ConnectionFactory as ConnectionFactory;
 
 class Evenement {
-    private int $IDEvent;
     private string $nom;
     private Date $date;
     private int $nbParticipant;
@@ -16,8 +15,7 @@ class Evenement {
     private string $lieu;
     private string $image;
 
-    public function __construct(int $IDEvent, string $nom, Date $date, int $nbParticipant, string $description, int $nbPlaceMax, string $intervenant, string $lieu, string $image) {
-        $this->IDEvent = $IDEvent;
+    public function __construct(string $nom, Date $date, int $nbParticipant, string $description, int $nbPlaceMax, string $intervenant, string $lieu, string $image) {
         $this->nom = $nom;
         $this->date = $date;
         $this->nbParticipant = $nbParticipant;
@@ -44,10 +42,11 @@ class Evenement {
 
     public function save() {
         $db = ConnectionFactory::makeConnection();
-        $sql = "INSERT INTO Evenement (nom, date, nbParticipant, description, nbPlaceMax, intervenant, lieu, image) VALUES (:nom, :date, :nbParticipant, :description, :nbPlaceMax, :intervenant, :lieu, :image)";
+        $sql = "INSERT INTO Evenement (nom, date, NBParticipants, description, nbPlaceMax, intervenant, lieu, image) VALUES (:nom, STR_TO_DATE(:date, '%Y-%c-%d %H:%i'), :nbParticipant, :description, :nbPlaceMax, :intervenant, :lieu, :image)";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':nom', $this->nom);
-        $stmt->bindParam(':date', $this->date);
+        $date = $this->date->toString();
+        $stmt->bindParam(':date', $date);
         $stmt->bindParam(':nbParticipant', $this->nbParticipant);
         $stmt->bindParam(':description', $this->description);
         $stmt->bindParam(':nbPlaceMax', $this->nbPlaceMax);
