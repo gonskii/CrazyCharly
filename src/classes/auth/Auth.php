@@ -78,7 +78,7 @@ class Auth
             // si l'email n'est pas utilisé on ajoute l'utilisateur dans la base de données
             if($result[0] == 0)
             {
-                $sql = "insert into User values (?, ?, ?, ?, 1);";
+                $sql = "insert into User(email, password, nom, prenom, role) values (?, ?, ?, ?, 1);";
                 $query = $db->prepare($sql);
                 $query->bindParam(1, $email);
                 $query->bindParam(2, $hash);
