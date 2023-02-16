@@ -23,7 +23,7 @@ class Proposition {
 
     public function save() {
         $db = ConnectionFactory::makeConnection();
-        $sql = "INSERT INTO Proposition (IDUser, description, nom, nbPlacesMax) VALUES (:IDUser, :description, :nom, :nbPlaceMax)";
+        $sql = "INSERT INTO Proposition (IDUser, description, nom, nbPlaceMax) VALUES (:IDUser, :description, :nom, :nbPlaceMax)";
         $stmt = $db->prepare($sql);
         $stmt->bindParam(':IDUser', $this->IDUser);
         $stmt->bindParam(':description', $this->description);
