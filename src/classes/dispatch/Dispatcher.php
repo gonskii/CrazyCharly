@@ -108,7 +108,7 @@ class Dispatcher
                 }
                 break;
             case 'cree_evenement':
-                if (Auth::verification()) {
+                if (Auth::verification() && Auth::getRank() == 100) {
                     $creerEvenement = new CreerEvenement();
                     $html = $creerEvenement->execute();
                 } else {

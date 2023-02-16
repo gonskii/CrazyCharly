@@ -3,6 +3,7 @@
 namespace teamiut\action;
 
 use teamiut\db\ConnectionFactory;
+use teamiut\tables\Evenement;
 
 
 class CreerEvenement implements Action
@@ -40,7 +41,6 @@ class CreerEvenement implements Action
         END;
         } else if (($_SERVER['REQUEST_METHOD'] == 'POST'))
         {
-            $db = ConnectionFactory::makeConnection();
             $nom = $_POST['nom'];
             $theme = $_POST['theme'];
             $jour = $_POST['jour'];
@@ -50,7 +50,8 @@ class CreerEvenement implements Action
             $intervenants = $_POST['intervenants'];
             $lieu = $_POST['lieu'];
 
-            $html .= $jour . '\n' . $heure;
+            $event = new Evenement(-1,$nom, $theme, $jour, $heure, $description, $nbplace, $intervenants, null , $lieu);
+            $event->save();
             $html .= <<<END
                 <body> <p>Evenement crée !</p></body>
             END;
