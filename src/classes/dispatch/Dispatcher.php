@@ -80,7 +80,10 @@ class Dispatcher
                 }
                 break;
 
-
+            case 'connexion':
+                $connexion = new SeConnecter();
+                $html = $connexion->execute();
+                break;
 
             case 'deconnexion':
                 $deconnexion = new Deconnexion();

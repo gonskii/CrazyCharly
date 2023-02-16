@@ -17,9 +17,6 @@ class Inscription implements Action
         $html .= '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
         $html .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
         $html .= '<title>Inscription</title>';
-        $html .= '<link rel="stylesheet" href="src/css/Inscription.css">';
-        $html .= '<link rel="shortcut icon" type="image/jpg" href="src/images/logo/logo-Netflix.jpg"/>';
-        $html .= '</head><body background="src/images/css/netfix_background.jpeg">';
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
@@ -30,8 +27,6 @@ class Inscription implements Action
             $html .= '<p>Password confirmation</p><input class="input" type="password" name="password2" >';
             $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
             $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-            $html .= '<div class="gender"><input class="input" type="radio" name="genre" value="Femme">Femme';
-            $html .= '<input type="radio" class="input" name="genre" value="Homme">Homme<br></div>';
             $html .= '<button type="submit">Inscription</button>';
             $html .= '</form>';
 
@@ -45,8 +40,6 @@ class Inscription implements Action
                 $html .= '<p>Password confirmation</p><input class="input" type="password" name="password2" >';
                 $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
                 $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-                $html .= '<div class="gender"><input class="input" type="radio" name="genre" value="Femme">Femme';
-                $html .= '<input type="radio" class="input" name="genre" value="Homme">Homme<br></div>';
                 $html .= '<div class="error"><p>Tous les champs doivent être renseignés !</p></div>';
                 $html .= '<button id="disable" type="submit">Inscription</button>';
                 $html .= '</form>';
@@ -59,8 +52,6 @@ class Inscription implements Action
                 $html .= '<div class="error"><p>Les mots de passes ne sont pas identiques !</p></div>';
                 $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
                 $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-                $html .= '<div class="gender"><input class="input" type="radio" name="genre" value="Femme">Femme';
-                $html .= '<input type="radio" class="input" name="genre" value="Homme">Homme<br></div>';
                 $html .= '<button type="submit">Inscription</button>';
                 $html .= '</form>';
             } else {
@@ -68,8 +59,7 @@ class Inscription implements Action
                 $pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
                 $nom = filter_var($_POST['nom'], FILTER_SANITIZE_STRING);
                 $prenom = filter_var($_POST['prenom'], FILTER_SANITIZE_STRING);
-                $genre = filter_var($_POST['genre'], FILTER_SANITIZE_STRING);
-                $res = Auth::register($email, $pass, $nom, $prenom, $genre);
+                $res = Auth::register($email, $pass, $nom, $prenom);
                 if ($res == 1) {
                     Auth::authentificate($email, $pass);
                     $token = Auth::genererToken($email);
@@ -84,8 +74,6 @@ class Inscription implements Action
                     $html .= '<div class="error"><p>Les mots de passes sont trop court !</p></div>';
                     $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
                     $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-                    $html .= '<div class="gender"><input class="input" type="radio" name="genre" value="Femme">Femme';
-                    $html .= '<input type="radio" class="input" name="genre" value="Homme">Homme<br></div>';
                     $html .= '<button type="submit">Inscription</button>';
                     $html .= '</form>';
                 }
@@ -98,8 +86,6 @@ class Inscription implements Action
                     $html .= '<div class="error"><p>Une erreur vient de se produire</p></div>';
                     $html .= '<div class="name"><div class="part"><p>Nom</p><input type="text" name="nom"></div>';
                     $html .= '<div class="part"><p>Prenom</p><input class="input" type="text" name="prenom"></div></div>';
-                    $html .= '<div class="gender"><input class="input" type="radio" name="genre" value="Femme">Femme';
-                    $html .= '<input type="radio" class="input" name="genre" value="Homme">Homme<br></div>';
                     $html .= '<button type="submit">Inscription</button>';
                     $html .= '</form>';
                 }

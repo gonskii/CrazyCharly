@@ -22,7 +22,7 @@ class Utilisateur
      * constructeur de la class Utilisateur qui prends en paramètre 
      * tout les attributs de la class
      */
-    public function __construct(int $IDuser, string $email, string $password, string $nom, string $prenom, int $role, string $sexe)
+    public function __construct(int $IDuser, string $email, string $password, string $nom, string $prenom, int $role)
     {
         $this->IDuser = $IDuser;
         $this->email = $email;
@@ -30,7 +30,6 @@ class Utilisateur
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->role = $role;
-        $this->sexe = $sexe;
     }
 
     /**

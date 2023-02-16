@@ -26,7 +26,7 @@ class Auth
     {
             // on récupere l'utilisateur dans la base de données grace a son email
             $db = ConnectionFactory::makeConnection();
-            $query = $db->prepare("select * from Utilisateur where email = ?;");
+            $query = $db->prepare("select * from User where email = ?;");
             $query->bindParam(1, $email);
             $query->execute();
             $row = $query->fetch(PDO::FETCH_ASSOC);
@@ -42,10 +42,9 @@ class Auth
                 $role = (int)$row['role'];
                 $nom = $row['nom'];
                 $prenom = $row['prenom'];
-                $sexe = $row['sexe'];
                 if (!password_verify($passwd2check, $hash)) return null;
             }
-            $user = new Utilisateur($id,$email,$hash,$nom,$prenom,$role,$sexe);
+            $user = new Utilisateur($id,$email,$hash,$nom,$prenom,$role);
             //on remplis tout les tableaux:
             Favoris::remplirFavoris($user);
             EnCours::remplirEnCours($user);
@@ -63,7 +62,7 @@ class Auth
      * @return int -1 si le mdp n'est pas assez long0 si l'utilisateur a bien été inscrit, 0 si l'utilisateur existe deja
      * 1 si l'inscription a reussi
      */
-    public static function register(string $email, string $pass, string $nom, string $prenom, string $sexe): int
+    public static function register(string $email, string $pass, string $nom, string $prenom): int
     {
         // on verifie que le mot de passe est assez long
         if (strlen($pass) < 10 || strlen($pass) > 40) return -1;

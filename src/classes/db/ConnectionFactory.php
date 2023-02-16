@@ -32,7 +32,7 @@ class ConnectionFactory
         if (self::$db == null)
         {
             if(self::$config !=null) {
-                $database = new PDO('mysql:host=' . self::$config['host'] . ';dbname=' . self::$config['database'],
+                $database = new PDO('mysql:host=' . self::$config['host'] . ':' . self::$config['port']. ';dbname=' . self::$config['database'],
                     self::$config['username'],
                     self::$config['password'], [
                         PDO::ATTR_PERSISTENT => true,
