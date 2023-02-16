@@ -3,6 +3,7 @@
 namespace teamiut\dispatch;
 
 use teamiut\action\Accueil;
+use teamiut\action\CreerEvenement;
 use teamiut\action\Deconnexion;
 use teamiut\action\Lobby;
 use teamiut\action\SeConnecter;
@@ -14,7 +15,7 @@ use teamiut\action\ChangementMotDePasse;
 use teamiut\action\ActivationCompte;
 
 
-use teamiut\Auth\Auth;
+use teamiut\auth\Auth;
 
 /**
  * Class Dispatcher
@@ -98,6 +99,11 @@ class Dispatcher
             case 'accueil':
                 $connexion = new Accueil();
                 $html = $connexion->execute();
+                break;
+
+            case 'creerEvenement':
+                $creerEvenement = new CreerEvenement();
+                $html = $creerEvenement->execute();
                 break;
 
             default:
