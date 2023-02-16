@@ -6,6 +6,7 @@ use teamiut\action\Accueil;
 use teamiut\action\CreerEvenement;
 use teamiut\action\Deconnexion;
 use teamiut\action\Lobby;
+use teamiut\action\PropositionEvenement;
 use teamiut\action\SeConnecter;
 use teamiut\action\Inscription;
 use teamiut\action\MotDePasseOublie;
@@ -101,11 +102,24 @@ class Dispatcher
                 $html = $connexion->execute();
                 break;
 
-            case 'creerEvenement':
-                $creerEvenement = new CreerEvenement();
-                $html = $creerEvenement->execute();
+            case 'proposition_evenement':
+                if (Auth::verification()) {
+                    $propositionEvenement = new PropositionEvenement();
+                    $html = $propositionEvenement->execute();
+                } else {
+                    $connexion = new Accueil();
+                    $html = $connexion->execute();
+                }
                 break;
-
+            case 'cree_evenement':
+                if (Auth::verification()) {
+                    $creerEvenement = new CreerEvenement();
+                    $html = $creerEvenement->execute();
+                } else {
+                    $connexion = new Accueil();
+                    $html = $connexion->execute();
+                }
+                break;
             default:
                 if (Auth::verification()) {
                     $lobby = new Lobby();

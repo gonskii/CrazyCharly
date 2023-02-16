@@ -10,7 +10,7 @@ class Proposition {
     private string $nom;
     private int $nbPlaceMax;
 
-    public function __construct(int $IDUser, string $description, string $nom, int $nbPlaceMax   ) {
+    public function __construct(int $IDUser, string $description, string $nom, int $nbPlaceMax) {
         $this->IDUser = $IDUser;
         $this->description = $description;
         $this->nom = $nom;
