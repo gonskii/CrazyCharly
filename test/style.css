@@ -1,0 +1,11 @@
+@font-face {
+  font-family: 'MarineSikona-Regular';
+  src: url('MarineSikona-Regular.otf') format('truetype');
+  /* Pour les fichiers de typographie WOFF, utilisez le format 'woff' à la place de 'truetype' */
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MarineSikona-Regular';
+}
