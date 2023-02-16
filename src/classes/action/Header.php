@@ -35,7 +35,7 @@ class Header implements Action
             </div>
             <div id="headerDeux">
                 <a href="?action=accueil" class="headerDeux">Accueil</a>
-                <a href="" class="headerDeux">Le restaurant</a>
+                <a href="?action=restaurant" class="headerDeux">Le restaurant</a>
                 <a href="?action=afficherEvenements" id="decalage" class="headerDeux">Evenement</a>
                 <img id="logoHaut" src="src/images/logo-courcircuitbon.png" alt="Logo court Circuit">
                 <a href="" class="headerDeux">Notre engagement</a>
