@@ -84,7 +84,7 @@ class Dispatcher
                     $connexion = new SeConnecter();
                     $html = $connexion->execute();
                 } else {
-                    $lobby = new Lobby();
+//                    $lobby = new Lobby();
                     $lobby = new Accueil();
                     $html = $lobby->execute();
                 }
