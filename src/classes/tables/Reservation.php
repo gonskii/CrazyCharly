@@ -31,7 +31,7 @@ class Reservation {
         $result = $stmt->fetchAll();
         $reservations = array();
         foreach ($result as $row) {
-            $reservations[] = new Reservation($row['IDUser'], $row['IDJourOuvert'], $row['nbPersonnes'], new Date($row['date']));
+            $reservations[] = new Reservation($row['IDUser'], $row['IDJourOuvert'], $row['NBPersonnes'], new Date($row['date']));
         }
         return $reservations;
     }

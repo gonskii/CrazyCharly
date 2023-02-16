@@ -3,7 +3,7 @@
 namespace teamiut\action;
 
 
-use teamiut\Auth\Auth;
+use teamiut\auth\Auth as Auth;
 
 /**
  * class SeConnecter
