@@ -30,4 +30,14 @@ class Evenement {
     public function __get($name) {
         return $this->$name;
     }
+
+    public static function getEventByID(int $IDEvent) {
+        $db = ConnectionFactory::getConnection();
+        $sql = "SELECT * FROM Evenement WHERE IDEvent = :IDEvent";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':IDEvent', $IDEvent);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return new Evenement($result['IDEvent'], $result['nom'], new Date($result['date']), $result['nbParticipant'], $result['description'], $result['nbPlaceMax'], $result['intervenant'], $result['lieu'], $result['image']);
+    }
 }

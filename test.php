@@ -11,3 +11,4 @@ ConnectionFactory::setConfig();
 $participe = new Participe();
 $participe->populateParticipe();
 echo $participe;
+echo "fonctionne";

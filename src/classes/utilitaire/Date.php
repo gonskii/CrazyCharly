@@ -8,11 +8,9 @@ namespace teamiut\utilitaire;
  */
 class Date
 {
-    /**
-     * @var int $jour le jour de la date
-     * @var int $mois le mois de la date
-     * @var int $annee l'annee de la date
-     */
+
+    private int $minutes;
+    private int $heures;
     private int $jour;
     private int $mois;
     private int $annee;
@@ -26,7 +24,13 @@ class Date
         $res = explode("-", $date);
         $this->annee = intval($res[0]);
         $this->mois = intval($res[1]);
-        $this->jour = intval($res[2]);
+
+        $res2 = explode(" ", $res[2]);
+        $this->jour = intval($res2[0]);
+
+        $res3 = explode(":", $res2[1]);
+        $this->heures = intval($res3[0]);
+        $this->minutes = intval($res3[1]);
     }
 
     /**
@@ -42,28 +46,42 @@ class Date
      * @return string la date sous forme de string
      */
     public function toString() : string {
-        return $this->jour . "/" . $this->mois . "/" . $this->annee;
+        return "$this->jour-$this->mois-$this->annee $this->heures:$this->minutes";
     }
 
     public static function comparerDate(Date $d1, Date $d2):int
     {
-        $date1 = "$d1->jour-$d1->mois-$d1->annee";
-        $date2 = "$d2->jour-$d2->mois-$d2->annee";
-        $time1 = strtotime($date1);
-        $time2 = strtotime($date2);
-        if($time1>$time2)
-        {
+        if($d1->annee > $d2->annee) {
             return 1;
-        }
-        else
-        {
+        } else if($d1->annee < $d2->annee) {
             return -1;
+        } else {
+            if($d1->mois > $d2->mois) {
+                return 1;
+            } else if($d1->mois < $d2->mois) {
+                return -1;
+            } else {
+                if($d1->jour > $d2->jour) {
+                    return 1;
+                } else if($d1->jour < $d2->jour) {
+                    return -1;
+                } else {
+                    if($d1->heures > $d2->heures) {
+                        return 1;
+                    } else if($d1->heures < $d2->heures) {
+                        return -1;
+                    } else {
+                        if($d1->minutes > $d2->minutes) {
+                            return 1;
+                        } else if($d1->minutes < $d2->minutes) {
+                            return -1;
+                        } else {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
-
-        //comparer date parmis année, mois et jour
-
-
-
     }
 
 
