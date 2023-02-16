@@ -52,7 +52,14 @@ class AffichageEvenement
                         $bool = false;
                         if(Auth::verification())
                         {
-                            $
+                            $user = unserialize($_SESSION['user']);
+                            $idUser = $user->IDuser;
+                            $bol = Participe::verifierParticipation($idUser,$idEvenement);
+
+                            if(!$bol)
+                            {
+                                echo "tu peux t'inscrire ";
+                            }
                         }
                         else
                         {

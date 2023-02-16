@@ -28,6 +28,23 @@ class Participe {
         return $str;
     }
 
+    public static function verifierParticipation($idUser, $idEvenement): bool
+    {
+        $res = false;
+        $conn = ConnectionFactory::makeConnection();
+        $sql = "SELECT * FROM Participe WHERE IDUser = :idUser AND IDEvent = :idEvent";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':idUser', $idUser);
+        $stmt->bindParam(':idEvent', $idEvenement);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+        if(count($result)==1)
+        {
+            $res = true;
+        }
+        return $res;
+    }
 
     public function populateParticipe() {
         $conn = ConnectionFactory::makeConnection();
