@@ -3,6 +3,7 @@
 namespace teamiut\dispatch;
 
 use teamiut\action\Accueil;
+use teamiut\action\AffichageEvenements;
 use teamiut\action\CreerEvenement;
 use teamiut\action\Deconnexion;
 use teamiut\action\Lobby;
@@ -67,6 +68,11 @@ class Dispatcher
 
             case 'activation':
                 $act = new ActivationCompte();
+                $html = $act->execute();
+                break;
+
+            case 'afficherEvenements':
+                $act = new AffichageEvenements();
                 $html = $act->execute();
                 break;
 
