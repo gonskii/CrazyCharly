@@ -34,12 +34,7 @@ class ConnectionFactory
             if(self::$config !=null) {
                 $database = new PDO('mysql:host=' . self::$config['host'] . ':' . self::$config['port']. ';dbname=' . self::$config['database'],
                     self::$config['username'],
-                    self::$config['password'], [
-                        PDO::ATTR_PERSISTENT => true,
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_EMULATE_PREPARES => false,
-                        PDO::ATTR_STRINGIFY_FETCHES => false,
-                    ]);
+                    self::$config['password']);
 
                 self::$db = $database;
 
