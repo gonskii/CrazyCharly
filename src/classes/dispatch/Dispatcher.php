@@ -7,6 +7,7 @@ use teamiut\action\AffichageEvenements;
 use teamiut\action\CreerEvenement;
 use teamiut\action\Deconnexion;
 use teamiut\action\Lobby;
+use teamiut\action\Menu;
 use teamiut\action\PropositionEvenement;
 use teamiut\action\Restaurant;
 use teamiut\action\SeConnecter;
@@ -129,6 +130,11 @@ class Dispatcher
             case 'changementMotDePasse':
                 $mdp = new ChangementMotDePasse();
                 $html = $mdp->execute();
+                break;
+
+            case 'menu':
+                $menu = new Menu();
+                $html = $menu->execute();
                 break;
 
             case 'proposition_evenement':

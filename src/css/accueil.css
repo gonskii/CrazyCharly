@@ -96,3 +96,7 @@ a {
     text-decoration: none;
 }
 
+#imageMenu {
+    height: 60%;
+    width: 60%;
+}
