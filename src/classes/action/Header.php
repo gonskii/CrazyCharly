@@ -66,7 +66,7 @@ class Header implements Action
                 <div class="bg-img" style="background-image: url('src/images/Fond.png');  background-position: center;
             background-repeat: no-repeat;
             background-size: cover; height: 100vh;" alt="bison">
-                <h1 class="hautDePage">Bienvenu à</h1>
+                <h1 class="hautDePage">Bienvenue à</h1>
                 <h1 class="sousTexteHautDePage">Court Circuit Nancy</h1>
                 <h1 class="sousTexteHautDePage2">Le local à vivre(s) !</h1>  
         END;
